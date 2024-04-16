@@ -1,0 +1,27 @@
+{
+  "name": "test-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VOPHUCTIEN3010/test_nodejs.git"
+  },
+  "keywords": [
+    "vophuctien3010"
+  ],
+  "author": "vophuctien3010",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VOPHUCTIEN3010/test_nodejs/issues"
+  },
+  "homepage": "https://github.com/VOPHUCTIEN3010/test_nodejs#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
