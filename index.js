@@ -6,6 +6,6 @@ app.get('/tin-tuc',(req,res) => {
     var a = 1;
     var b = 2;
     var c =  a + b;
-    return res.send('hello world') 
+    return res.send('hello world   ') 
 })
 app.listen(port, () => console.log(`example at http://localhost:${port}`) )
