@@ -1,5 +1,5 @@
 const connection = require("../config/database");
-const { getAllRecord, getStudentById, updateStudentById, deleteStudentNyId, getRecord } = require("../services/CRUDservices");
+const { getAllRecord, getStudentById, updateStudentById, deleteStudentById, getRecord } = require("../services/CRUDservices");
 
 const getHomepage = async (req, res) => {
     let results = await getAllRecord();
@@ -7,13 +7,13 @@ const getHomepage = async (req, res) => {
 }
 
 const postCreateUser = async (req, res) => {
-    let {fullname, address, phone, classname} = req.body;
+    let {fullname, address, phone, photo, classname} = req.body;
     
     let[results, fields] = await connection.query( 
-        `INSERT INTO students (fullname, address, phone, classname) VALUES (?, ?, ?, ?)`, [fullname, address, phone, classname], 
+        `INSERT INTO students (fullname, address, phone, photo, classname) VALUES (?, ?, ?, ?, ?)`, [fullname, address, phone, photo, classname], 
     ) 
     return res.redirect('/');
-} 
+}
 
 const getCreatePages = (req, res) => {
     res.render('create.ejs');
@@ -30,8 +30,9 @@ const postUpdateUser = async (req, res) => {
     let address = req.body.address;
     let phone = req.body.phone;
     let classname = req.body.classname;
+    let photo = req.body.photo;
     let studentId = req.body.studentId;
-    await updateStudentById(fullname, address, phone, classname, studentId);
+    await updateStudentById(fullname, address, phone, classname, photo, studentId);
     return res.redirect('/');
 }
 
@@ -44,7 +45,7 @@ const postDeleteUser = async (req, res) => {
 
 const postRemoveUser = async (req, res) => {     
     const id = req.body.studentId;
-    await deleteStudentNyId(id);
+    await deleteStudentById(id);
     res.redirect('/');
 }
 

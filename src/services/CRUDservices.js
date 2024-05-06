@@ -16,22 +16,21 @@ const getStudentById = async (studentsId) => {
     return student;
 }
 
-const updateStudentById = async (fullname, address, phone, classname, studentId) => { 
+const updateStudentById = async (fullname, address, phone, classname, photo, studentId) => { 
     let[results, fields] = await connection.query( 
         `UPDATE students 
-        SET fullname = ?, address = ?, phone = ?, classname = ? \
+        SET fullname = ?, address = ?, phone = ?, classname = ?, photo = ? 
         WHERE id = ?`, 
-        [fullname, address, phone, classname, studentId], 
+        [fullname, address, phone, classname, photo, studentId], 
     ) 
 }
 
-const deleteStudentNyId = async (id) => { 
+const deleteStudentById = async (id) => { 
     let[results, fields] = await connection.query( 
         `DELETE FROM students WHERE id = ? `, [id], 
     ) 
 }
 
-
 module.exports = {
-    getAllRecord, getStudentById, updateStudentById, deleteStudentNyId, getRecord
+    getAllRecord, getStudentById, updateStudentById, deleteStudentById, getRecord
 }
